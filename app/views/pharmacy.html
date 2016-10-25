@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="page-header custom-page-header">
+		<!-- This is going to be the title of the view. -->
+		<h1>{{title}}</h1>
+		<div class="pull-right btn-container">
+			<toaster-container toaster-options="{'time-out': 5000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+			<button class="btn btn-default" ng-click="goBack()">
+				<i class="fa fa-arrow-left"></i>
+				Back
+			</button>
+			<button class="btn btn-primary" ng-click="createNew()">
+				<i class="fa fa-plus"></i>
+				Create New
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="form-group col-xs-6">
+				<label class="control-label">NABP:</label>
+				<input type="text" class="form-control" name="nabp" id="nabp" ng-model="find.Nabp" ng-keyup="$event.keyCode == 13 ? search(find) : null">
+			</div>
+			<div class="form-group col-xs-6">
+				<label class="control-label">NPI:</label>
+				<input type="text" class="form-control" name="npi" id="npi" ng-model="find.Npi" ng-keyup="$event.keyCode == 13 ? search(find) : null">
+			</div>
+		</div>
+	</div>
+	<kendo-grid options="mainGridOptions">
+	</kendo-grid>
+	<!--<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group col-xs-6">
+					<label class="control-label">NABP:</label>
+					<input type="text" class="form-control" name="nabp" id="nabp" ng-model="find.Nabp" ng-keyup="$event.keyCode == 13 ? search(find) : null">
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="control-label">NPI:</label>
+					<input type="text" class="form-control" name="npi" id="npi" ng-model="find.Npi" ng-keyup="$event.keyCode == 13 ? search(find) : null">
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>NABP</th>
+							<th>Name</th>
+							<th>Address 1</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Zip Code</th>
+							<th>Phone</th>
+							<th>NPI</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="c in content">
+							<td ng-repeat="f in fields">{{::c[f]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>-->
+</div>
