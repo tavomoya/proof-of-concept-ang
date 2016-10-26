@@ -5,58 +5,17 @@ angular.module('proofOfConceptApp')
 
     $scope.title = "Pharmacies";
 
-    $scope.content = [];
-
-    $scope.fields = [
-        'pharmacy_base_nabp', 
-        'pharmacy_base_pharmacyname', 
-        'pharmacy_base_pharmaddr1', 
-        'pharmacy_base_pharmcity', 
-        'pharmacy_base_pharmstate', 
-        'pharmacy_base_pharmzip', 
-        'pharmacy_base_phone', 
-        'pharmacy_base_npi'
-    ];
-
-    $scope.createNew = function () {
-        $location.path('/pharmacy-create');
-    };
-
-    $scope.editContent = function (pharmacy) {
-        $location.path('pharmacy-create', {
-            id: pharmacy.id
-        });
-    };
-
-    var search = {
-        Nabp: 'ABC123'
-    }
-
-    $scope.search = function (findObject) {
-
-        for (var key in findObject) {
-            if (findObject[key] == '' || findObject[key] == undefined) {
-                delete findObject[key];
-            }
-        };
-
-        new Pharmacy().GetByQuery(findObject)
-        .then(function (obj) {
-            $scope.content = obj;
-        }, function (err) {
-            $scope.content = [];
-            toaster.pop('error', 'Error Retreiving Data', err.data.user_message);
-        })
-
-    };
-
     $scope.mainGridOptions = {
-        dataSource: {
-            data: $scope.content,
-            pageSize: 5
-        },
+        dataSource: new kendo.data.DataSource({
+            transport: {
+                read: function (obj) {
+                    obj.success(obj.data.data || [])
+                }
+            }
+        }),
         sortable: true,
         pageable: true,
+        rowTemplate: kendo.template($("#rowTemplate").html()),
         columns: [
             {
                 field: 'pharmacy_base_nabp',
@@ -91,6 +50,50 @@ angular.module('proofOfConceptApp')
                 title: 'Npi'
             }
         ]
+    };
+
+    $scope.fields = [
+        'pharmacy_base_nabp', 
+        'pharmacy_base_pharmacyname', 
+        'pharmacy_base_pharmaddr1', 
+        'pharmacy_base_pharmcity', 
+        'pharmacy_base_pharmstate', 
+        'pharmacy_base_pharmzip', 
+        'pharmacy_base_phone', 
+        'pharmacy_base_npi'
+    ];
+
+    $scope.createNew = function () {
+        $location.path('/pharmacy-create');
+    };
+
+    $scope.editContent = function (pharmacyId) {
+        $location.path('pharmacy-create')
+        .search({
+            id: pharmacyId
+        });
+    };
+
+    var search = {
+        Nabp: 'ABC123'
+    }
+
+    $scope.search = function (findObject) {
+
+        for (var key in findObject) {
+            if (findObject[key] == '' || findObject[key] == undefined) {
+                delete findObject[key];
+            }
+        };
+
+        new Pharmacy().GetByQuery(findObject)
+        .then(function (obj) {
+            $scope.mainGridOptions.dataSource.read({data: obj})
+        }, function (err) {
+            $scope.mainGridOptions.dataSource.read();
+            toaster.pop('error', 'Error Retreiving Data', err.data.user_message);
+        })
+
     };
 
     $scope.goBack = function () {

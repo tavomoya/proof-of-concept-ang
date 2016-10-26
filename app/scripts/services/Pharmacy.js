@@ -19,6 +19,7 @@ angular.module('proofOfConceptApp')
                     error: 'Theres no record with that Id'
                 });
             }
+            var data = [];
             deferred.resolve(obj.data);
         })
         .catch(function (err) {
@@ -34,7 +35,6 @@ angular.module('proofOfConceptApp')
 
         $http.post(this.apiPath + '/query', query)
         .then(function (res) {
-            console.log('la data', res)
             if (res.data.length < 1) {
                 deferred.reject({
                     error: 'There are no pharmacies with this parameters'
