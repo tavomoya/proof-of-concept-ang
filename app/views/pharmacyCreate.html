@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="page-header">
-			<h1>{{}} Pharmacy</h1>
+		<div class="page-header custom-page-header">
+			<h1>Pharmacy</h1>
 			<div class="pull-right btn-container">
 				<toaster-container toaster-options="{'time-out': 2000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
 				<button class="btn btn-default" ng-click="goBack()">
@@ -51,127 +51,132 @@
 					<div class="form-group col-xs-4">
 						<label class="col-xs-4 control-label" for="storeNumber">Store Number:</label>
 						<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.storeNumber.$invalid && pharmacyForm.$submitted}">
-							<input type="text" class="form-control" name="storeNumber" id="storeNumber" ng-model="pharmacy.pharmacy_base_routingnumber" required>
+							<input type="text" class="form-control" name="storeNumber" id="storeNumber" ng-model="pharmacy.pharmacy_base_routingnumber"
+								required>
 							<p ng-show="pharmacyForm.storeNumber.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<br>
-			<ul class="nav nav-tabs">
-				<li ng-class="{'active': activeTab == 1}"><a ng-click="activeTab = 1" data-toggle="tab">Main Information</a>
-				</li>
-				<li ng-class="{'active': activeTab == 2}"><a ng-click="activeTab = 2" data-toggle="tab">PayTo Information</a>
-				</li>
-			</ul>
-
-			<div class="tab-content">
-				<div class="tab-pane-active">
-					<div ng-if="activeTab == 1">
-						<br>
-						<div class="form-group">
-							<label class="col-xs-2 control-label" for="addres1">Address 1:</label>
-							<div class="col-xs-10" ng-class="{'has-error': pharmacyForm.addres1.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="addres1" id="addres1" ng-model="pharmacy.pharmacy_base_pharmaddr1" required>
-								<p ng-show="pharmacyForm.addres1.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs custom-tab-nav">
+						<li ng-class="{'active': activeTab == 1}"><a ng-click="activeTab = 1" data-toggle="tab">Main Information</a>
+						</li>
+						<li ng-class="{'active': activeTab == 2}"><a ng-click="activeTab = 2" data-toggle="tab">PayTo Information</a>
+						</li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane-active">
+							<div ng-if="activeTab == 1">
+								<br>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="addres1">Address 1:</label>
+									<div class="col-xs-10" ng-class="{'has-error': pharmacyForm.addres1.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="addres1" id="addres1" ng-model="pharmacy.pharmacy_base_pharmaddr1" required>
+										<p ng-show="pharmacyForm.addres1.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="addres2">Address 2:</label>
+									<div class="col-xs-10" ng-class="{'has-error': pharmacyForm.addres2.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="addres2" id="addres2" ng-model="pharmacy.pharmacy_base_pharmaddr2" required>
+										<p ng-show="pharmacyForm.addres2.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="city">City:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.city.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="city" id="city" ng-model="pharmacy.pharmacy_base_pharmcity" required>
+										<p ng-show="pharmacyForm.city.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+                                <div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="county">County:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.county.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="county" id="county" ng-model="pharmacy.pharmacy_base_county" required>
+										<p ng-show="pharmacyForm.county.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="state">State:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.state.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="state" id="state" ng-model="pharmacy.pharmacy_base_pharmstate" required>
+										<p ng-show="pharmacyForm.state.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="zip">Zip Code:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.zip.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="zip" id="zip" ng-model="pharmacy.pharmacy_base_pharmzip" required>
+										<p ng-show="pharmacyForm.zip.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="phone">Phone:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.phone.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="phone" id="phone" ng-model="pharmacy.pharmacy_base_phone" required>
+										<p ng-show="pharmacyForm.phone.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="fax">Fax:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.fax.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="fax" id="fax" ng-model="pharmacy.pharmacy_base_fax" required>
+										<p ng-show="pharmacyForm.fax.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-xs-2 control-label" for="addres2">Address 2:</label>
-							<div class="col-xs-10" ng-class="{'has-error': pharmacyForm.addres2.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="addres2" id="addres2" ng-model="pharmacy.pharmacy_base_pharmaddr2" required>
-								<p ng-show="pharmacyForm.addres2.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-xs-2 control-label" for="city">City:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.city.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="city" id="city" ng-model="pharmacy.pharmacy_base_pharmcity" required>
-								<p ng-show="pharmacyForm.city.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="state">State:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.state.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="state" id="state" ng-model="pharmacy.pharmacy_base_pharmstate" required>
-								<p ng-show="pharmacyForm.state.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="zip">Zip Code:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.zip.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="zip" id="zip" ng-model="pharmacy.pharmacy_base_pharmzip" required>
-								<p ng-show="pharmacyForm.zip.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="phone">Phone:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.phone.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="phone" id="phone" ng-model="pharmacy.pharmacy_base_phone" required>
-								<p ng-show="pharmacyForm.phone.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="fax">Fax:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.fax.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="fax" id="fax" ng-model="pharmacy.pharmacy_base_fax" required>
-								<p ng-show="pharmacyForm.fax.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-xs-2 control-label" for="county">County:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.county.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="county" id="county" ng-model="pharmacy.pharmacy_base_county" required>
-								<p ng-show="pharmacyForm.county.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+							<div ng-if="activeTab == 2">
+								<br>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="paycentercode">Pay Center:</label>
+									<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.paycentercode.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="paycentercode" id="paycentercode" ng-model="pharmacy.pharmacy_base_paycentercode"
+											required>
+										<p ng-show="pharmacyForm.paycentercode.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="mailaddr1">Mail Address:</label>
+									<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailaddr1.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="mailaddr1" id="mailaddr1" ng-model="pharmacy.pharmacy_base_mailaddr1" required>
+										<p ng-show="pharmacyForm.mailaddr1.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="mailaddr2">Mail Addres 2:</label>
+									<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailaddr2.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="mailaddr2" id="mailaddr2" ng-model="pharmacy.pharmacy_base_mailaddr2" required>
+										<p ng-show="pharmacyForm.mailaddr2.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-2 control-label" for="mailcity">Mail City:</label>
+									<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailcity.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="mailcity" id="mailcity" ng-model="pharmacy.pharmacy_base_mailcity" required>
+										<p ng-show="pharmacyForm.mailcity.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="mailstate">Mail State:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.mailstate.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="mailstate" id="mailstate" ng-model="pharmacy.pharmacy_base_mailstate" required>
+										<p ng-show="pharmacyForm.mailstate.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-4 control-label" for="mailzip">Mail Zip:</label>
+									<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.mailzip.$invalid && pharmacyForm.$submitted}">
+										<input type="text" class="form-control" name="mailzip" id="mailzip" ng-model="pharmacy.pharmacy_base_mailzip" required>
+										<p ng-show="pharmacyForm.mailzip.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-                    <div ng-if="activeTab == 2">
-                        <br>
-                        <div class="form-group">
-							<label class="col-xs-2 control-label" for="paycentercode">Pay Center:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.paycentercode.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="paycentercode" id="paycentercode" ng-model="pharmacy.pharmacy_base_paycentercode" required>
-								<p ng-show="pharmacyForm.paycentercode.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                        <div class="form-group">
-							<label class="col-xs-2 control-label" for="mailaddr1">Mail Address:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailaddr1.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="mailaddr1" id="mailaddr1" ng-model="pharmacy.pharmacy_base_mailaddr1" required>
-								<p ng-show="pharmacyForm.mailaddr1.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                        <div class="form-group">
-							<label class="col-xs-2 control-label" for="mailaddr2">Mail Addres 2:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailaddr2.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="mailaddr2" id="mailaddr2" ng-model="pharmacy.pharmacy_base_mailaddr2" required>
-								<p ng-show="pharmacyForm.mailaddr2.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                        <div class="form-group">
-							<label class="col-xs-2 control-label" for="mailcity">Mail City:</label>
-							<div class="col-xs-4" ng-class="{'has-error': pharmacyForm.mailcity.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="mailcity" id="mailcity" ng-model="pharmacy.pharmacy_base_mailcity" required>
-								<p ng-show="pharmacyForm.mailcity.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                        <div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="mailstate">Mail State:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.mailstate.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="mailstate" id="mailstate" ng-model="pharmacy.pharmacy_base_mailstate" required>
-								<p ng-show="pharmacyForm.mailstate.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                        <div class="form-group col-xs-6">
-							<label class="col-xs-4 control-label" for="mailzip">Mail Zip:</label>
-							<div class="col-xs-8" ng-class="{'has-error': pharmacyForm.mailzip.$invalid && pharmacyForm.$submitted}">
-								<input type="text" class="form-control" name="mailzip" id="mailzip" ng-model="pharmacy.pharmacy_base_mailzip" required>
-								<p ng-show="pharmacyForm.mailzip.$invalid && pharmacyForm.$submitted" class="help-block">This field is required.</p>
-							</div>
-						</div>
-                    </div>
 				</div>
 			</div>
 		</form>

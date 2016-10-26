@@ -11,7 +11,8 @@ angular.module('proofOfConceptApp')
                 read: function (obj) {
                     obj.success(obj.data.data || [])
                 }
-            }
+            },
+            pageSize: 5
         }),
         sortable: true,
         pageable: true,

@@ -84,7 +84,7 @@ body {
 }
 
 .custom-page-header {
-  margin: 25px, 0, 20px !important;
+  margin-top: 15px !important;
 }
 
 .custom-navbar-style {
@@ -94,4 +94,8 @@ body {
 
 .custom-header {
   margin-bottom: 0px !important;
+}
+
+.custom-tab-nav {
+  margin-bottom: -11px !important;
 }
